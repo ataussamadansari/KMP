@@ -3,7 +3,6 @@ workflows:
     name: KMP iOS Build Workflow
     max_build_duration: 60
     environment:
-      kotlin: latest
       xcode: latest
       cocoapods: default
     scripts:
