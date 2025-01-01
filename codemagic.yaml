@@ -6,21 +6,24 @@ workflows:
       xcode: latest
       cocoapods: default
     scripts:
+      - name: Set execute permission for gradlew
+        script: |
+          chmod +x ./gradlew
       - name: Install dependencies
         script: |
           ./gradlew :shared:packForXcode
       - name: Build iOS Framework
         script: |
-          xcodebuild -workspace ios/dollarwallpaper.xcworkspace \
+          xcodebuild -workspace ios/Dollar Wallpaper.xcworkspace \
                      -scheme Dollar Wallpaper \
                      -sdk iphoneos \
                      -configuration Release \
-                     -archivePath $PWD/build/dollarwallpaper.xcarchive \
+                     -archivePath $PWD/build/Dollar Wallpaper.xcarchive \
                      archive
       - name: Export .ipa
         script: |
           xcodebuild -exportArchive \
-                     -archivePath $PWD/build/dollarwallpaper.xcarchive \
+                     -archivePath $PWD/build/Dollar Wallpaper.xcarchive \
                      -exportOptionsPlist ios/exportOptions.plist \
                      -exportPath $PWD/build/ios
     artifacts:
