@@ -3,6 +3,7 @@ workflows:
     name: KMP iOS Build Workflow
     max_build_duration: 60
     environment:
+      kotlin: latest
       xcode: latest
       cocoapods: default
     scripts:
@@ -11,16 +12,16 @@ workflows:
           ./gradlew :shared:packForXcode
       - name: Build iOS Framework
         script: |
-          xcodebuild -workspace ios/Dollar Wallpaper.xcworkspace \
-                     -scheme <YourSchemeName> \
+          xcodebuild -workspace ios/dollarwallpaper.xcworkspace \
+                     -scheme Dollar Wallpaper \
                      -sdk iphoneos \
                      -configuration Release \
-                     -archivePath $PWD/build/Dollar Wallpaper.xcarchive \
+                     -archivePath $PWD/build/dollarwallpaper.xcarchive \
                      archive
       - name: Export .ipa
         script: |
           xcodebuild -exportArchive \
-                     -archivePath $PWD/build/Dollar Wallpaper.xcarchive \
+                     -archivePath $PWD/build/dollarwallpaper.xcarchive \
                      -exportOptionsPlist ios/exportOptions.plist \
                      -exportPath $PWD/build/ios
     artifacts:
